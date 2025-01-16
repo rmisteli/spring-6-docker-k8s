@@ -1,0 +1,76 @@
+kubectl get all -o wide
+
+kubectl create deployment mongo --image=mongo --dry-run=client -o yaml > mongo-deployment.yaml
+kubectl create service clusterip mongo --tcp=27017:27017 --dry-run=client -o yaml > mongo-service.yaml
+
+kubectl apply -f mongo-deployment.yaml
+kubectl apply -f mongo-service.yaml
+
+kubectl delete deployment mongo
+kubectl delete service mongo
+
+---
+
+kubectl create deployment mysql --image=mysql:8 --dry-run=client -o yaml > mysql-deployment.yaml
+kubectl create service clusterip mysql --tcp=3606:3606 --dry-run=client -o yaml > mysql-service.yaml
+
+kubectl apply -f mysql-deployment.yaml
+kubectl apply -f mysql-service.yaml
+
+kubectl delete deployment mysql
+kubectl delete service mysql
+
+---
+
+kubectl create deployment auth-server --image=spring-6-auth-server:0.0.1-SNAPSHOT --dry-run=client -o yaml > auth-server-deployment.yaml
+kubectl create service clusterip auth-server --tcp=9000:9000 --dry-run=client -o yaml > auth-server-service.yaml
+
+kubectl apply -f auth-server-deployment.yaml
+kubectl apply -f auth-server-service.yaml
+
+kubectl delete deployment auth-server
+kubectl delete service auth-server
+
+---
+
+kubectl create deployment rest-mvc --image=spring-6-rest-mvc:0.0.1-SNAPSHOT --dry-run=client -o yaml > rest-mvc-deployment.yaml
+kubectl create service clusterip rest-mvc --tcp=8080:8080 --dry-run=client -o yaml > rest-mvc-service.yaml
+
+kubectl apply -f rest-mvc-deployment.yaml
+kubectl apply -f rest-mvc-service.yaml
+
+kubectl delete deployment rest-mvc
+kubectl delete service rest-mvc
+
+---
+
+kubectl create deployment reactive --image=spring-6-reactive:0.0.1-SNAPSHOT --dry-run=client -o yaml > reactive-deployment.yaml
+kubectl create service clusterip reactive --tcp=8080:8080 --dry-run=client -o yaml > reactive-service.yaml
+
+kubectl apply -f reactive-deployment.yaml
+kubectl apply -f reactive-service.yaml
+
+kubectl delete deployment reactive
+kubectl delete service reactive
+
+---
+
+kubectl create deployment reactive-mongo --image=spring-6-reactive-mongo:0.0.1-SNAPSHOT --dry-run=client -o yaml > reactive-mongo-deployment.yaml
+kubectl create service clusterip reactive-mongo --tcp=8080:8080 --dry-run=client -o yaml > reactive-mongo-service.yaml
+
+kubectl apply -f reactive-mongo-deployment.yaml
+kubectl apply -f reactive-mongo-service.yaml
+
+kubectl delete deployment reactive-mongo
+kubectl delete service reactive-mongo
+
+---
+
+kubectl create deployment gateway --image=spring-6-gateway:0.0.1-SNAPSHOT --dry-run=client -o yaml > gateway-deployment.yaml
+kubectl create service clusterip gateway --tcp=8080:8080 --dry-run=client -o yaml > gateway-service.yaml
+
+kubectl apply -f gateway-deployment.yaml
+kubectl apply -f gateway-service.yaml
+
+kubectl delete deployment gateway
+kubectl delete service gateway
